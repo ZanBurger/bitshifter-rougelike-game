@@ -5,7 +5,8 @@ using UnityEngine;
 public class SpawnerScript : MonoBehaviour
 {
     public GameObject enemy;
-    public float summonTime = 5f;
+    public float summonTime = 5;
+    public float summonRadius = 5;
     float summon = 0;
 
     // Start is called before the first frame update
@@ -18,7 +19,8 @@ public class SpawnerScript : MonoBehaviour
     void Update()
     {
         if( Time.fixedTime - summon > summonTime){
-            Vector2 pos = Random.insideUnitCircle * 5;
+            Vector2 pos = Random.insideUnitCircle * summonRadius;
+            pos += new Vector2(transform.position.x, transform.position.y);
             Instantiate(enemy, pos, Quaternion.identity);
             summon = Time.fixedTime;
         }

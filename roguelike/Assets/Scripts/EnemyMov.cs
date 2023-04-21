@@ -27,7 +27,11 @@ public class EnemyMov : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(player == null) return;
+        if (Time.fixedTime - boarn > 10)
+        {
+            Destroy(gameObject);
+        }
+        if (player == null) return;
         float distance = Vector2.Distance(player.transform.position, transform.position);
         transform.position = Vector2.MoveTowards(transform.position, player.transform.position, speed * Time.deltaTime);
         if(distance < 0.5)
@@ -35,9 +39,6 @@ public class EnemyMov : MonoBehaviour
             Destroy(player);
         }
 
-        if(Time.fixedTime - boarn > 10)
-        {
-            Destroy(gameObject);
-        }
+        
     }
 }
