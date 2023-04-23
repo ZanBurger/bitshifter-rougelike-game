@@ -72,8 +72,11 @@ public class PlayerController : MonoBehaviour
 
     // Used for collision with a gameobject that changes scenes
     void OnCollisionEnter2D(Collision2D other) {
-        if (other.gameObject.tag == "SceneChanger"){
-            ChangeScene.Instance.moveToScene();
+        if (other.gameObject.CompareTag("NextScene")){
+            ChangeScene.Instance.moveToNextScene();
+        }
+        if (other.gameObject.CompareTag("PreviousScene")){
+            ChangeScene.Instance.moveToPreviousScene();
         }
     }
 }

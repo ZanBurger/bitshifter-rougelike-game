@@ -7,8 +7,37 @@ public class ChangeScene : MonoBehaviour
 {
     public static ChangeScene Instance;
 
-    public void moveToScene(){
+    private string nextScene;
+    private string previousScene;
 
-        SceneManager.LoadScene("hall1");
+    private void Awake() {
+        
+        if (Instance == null){
+            Instance = this;
+        } 
+        else if (Instance != this){
+            Destroy(gameObject);
+        }
+    }
+
+    void Start() {
+        // Gets the current scene name
+       Scene scene = SceneManager.GetActiveScene();
+        if (scene.name == "demoLevel"){
+            nextScene = "Hall1";
+            previousScene = null;
+        }
+        else if (scene.name == "Hall1"){
+            nextScene = null;
+            previousScene = "demoLevel";
+        }
+    }
+
+    public void moveToNextScene(){
+        SceneManager.LoadScene(nextScene);
+    }
+
+    public void moveToPreviousScene(){
+        SceneManager.LoadScene(previousScene);
     }
 }
