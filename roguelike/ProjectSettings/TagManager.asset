@@ -7,6 +7,10 @@ TagManager:
   - Enemy
   - Obstacle
   - Bullet
+  - Collider
+  - SceneChanger
+  - NextScene
+  - PreviousScene
   layers:
   - Default
   - TransparentFX
