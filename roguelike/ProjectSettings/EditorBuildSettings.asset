@@ -17,4 +17,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Hall1.unity
     guid: 3470c2f5c0df27e4d99e681b7f723614
+  - enabled: 1
+    path: Assets/Scenes/BossRoom1.unity
+    guid: be2c2eefc055fed43a57c241ada03317
   m_configObjects: {}
