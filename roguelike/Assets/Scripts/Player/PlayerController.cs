@@ -69,4 +69,11 @@ public class PlayerController : MonoBehaviour
         var position = transform.position;
         if (Camera.main != null) Camera.main.transform.position = new Vector3(position.x, position.y, -10);
     }
+
+    // Used for collision with a gameobject that changes scenes
+    void OnCollisionEnter2D(Collision2D other) {
+        if (other.gameObject.tag == "SceneChanger"){
+            ChangeScene.Instance.moveToScene();
+        }
+    }
 }
