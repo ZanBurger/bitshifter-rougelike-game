@@ -8,7 +8,7 @@ public class AnimateTiles : MonoBehaviour
     public float timeToToggle = 5;
     public float currentTime = 0;
 
-    public bool enabled = true;
+    public new bool enabled = true;
     
     // Start is called before the first frame update
     void Start()

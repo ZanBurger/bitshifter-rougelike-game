@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Pathfinding;
 
 public class SpawnerScript : MonoBehaviour
 {
@@ -22,6 +23,7 @@ public class SpawnerScript : MonoBehaviour
             Vector2 pos = Random.insideUnitCircle * summonRadius;
             pos += new Vector2(transform.position.x, transform.position.y);
             Instantiate(enemy, pos, Quaternion.identity);
+           
             summon = Time.fixedTime;
         }
     }
