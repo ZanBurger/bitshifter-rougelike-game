@@ -17,6 +17,7 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     void Start(){
         moveSpeed = 5;
+        rb = GetComponent<Rigidbody2D>();
     }
 
     // Update is called once per frame, because of that we shouldn't do physics here.
@@ -39,7 +40,10 @@ public class PlayerController : MonoBehaviour
         
         // Shoot on left click.
         if(Input.GetKeyDown(KeyCode.Mouse0)){
-            weapon.Shoot();
+            if(weapon != null)
+            {
+                weapon.Shoot();
+            }
         }
         
         // Convert mouse position into Unity coordinate system (World).

@@ -14,7 +14,11 @@ public class Bullet : MonoBehaviour
         if(other.gameObject.CompareTag("Enemy")){
             Destroy(gameObject);
             other.gameObject.GetComponent<Helth>().TakeDamage(1);
-            
+        }
+        else if (other.gameObject.CompareTag("Player"))
+        {
+            Destroy(gameObject);
+            other.gameObject.GetComponent<Helth>().TakeDamage(1);
         }
         // If a bullet hits an obstacle (walls..), just destroy the bullet.
         else if (other.gameObject.CompareTag("Obstacle")){

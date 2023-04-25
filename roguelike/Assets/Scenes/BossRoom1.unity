@@ -174,6 +174,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5778416513424800700, guid: dc33c5cfdad06df7b92a3b79ee89638e, type: 3}
+      propertyPath: rb
+      value: 
+      objectReference: {fileID: 64100593}
     - target: {fileID: 5911294926236180234, guid: dc33c5cfdad06df7b92a3b79ee89638e, type: 3}
       propertyPath: m_Name
       value: Player
@@ -198,37 +202,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3533435458142523106, guid: dc33c5cfdad06df7b92a3b79ee89638e, type: 3}
   m_PrefabInstance: {fileID: 64100588}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &64100591
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 64100589}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 71c420adbe32086449c06741fd353238, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  moveSpeed: 0
-  rb: {fileID: 64100593}
-  weapon: {fileID: 1827821380}
---- !u!58 &64100592
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 64100589}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 0.3
 --- !u!50 &64100593
 Rigidbody2D:
   serializedVersion: 4
@@ -262,9 +235,9 @@ GameObject:
   - component: {fileID: 649519813}
   - component: {fileID: 649519812}
   - component: {fileID: 649519814}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Area
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2582,9 +2555,9 @@ GameObject:
   - component: {fileID: 876124524}
   - component: {fileID: 876124523}
   - component: {fileID: 876124525}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: AnimatedArea
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
