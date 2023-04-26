@@ -1,6 +1,7 @@
 using Pathfinding;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 
@@ -13,7 +14,10 @@ public class Enemy : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        _player = GameObject.Find("Player").transform;
+        var gameObjectP = GameObject.Find("Player");
+        if(gameObjectP == null ) return;
+        _player = gameObjectP.transform;
+        
         var aiDest = GetComponent<AIDestinationSetter>();
         if (aiDest == null) return;
         aiDest.target = _player;
@@ -24,8 +28,9 @@ public class Enemy : MonoBehaviour
     {
         if(_frameCounter == framesBetwenShoot)
         {
-            if (weapon != null)
+            if (weapon != null && _player != null)
             {
+                weapon.firePoint.up = _player.position - transform.position;
                 weapon.Shoot();
             }
             _frameCounter = 0;
