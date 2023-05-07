@@ -11,21 +11,18 @@ public class PlayerController : MonoBehaviour
     public float moveSpeed;
     public Rigidbody2D rb;
     private Vector2 _moveDirection;
+
+    private IncreasedMovement increasedMovement;
     // Shooting
     private Vector2 _lookDirection;
-    public Weapon weapon;
 
     // Start is called before the first frame update
     void Start(){
         moveSpeed = 5;
         rb = GetComponent<Rigidbody2D>();
-        IncreasedMovement increasedMovement = GetComponent<IncreasedMovement>();
         
-        // Used for testing purposes.
-        if (increasedMovement != null)
-        {
-            increasedMovement.playerController = this;
-        }
+        increasedMovement = gameObject.AddComponent<IncreasedMovement>();
+        increasedMovement.playerController = this;
     }
 
     // Update is called once per frame, because of that we shouldn't do physics here.
@@ -47,27 +44,20 @@ public class PlayerController : MonoBehaviour
         float moveY = Input.GetAxisRaw("Vertical");
 
         _moveDirection = new Vector2(moveX, moveY);
-        
-        // Shoot on left click.
-        if(Input.GetKeyDown(KeyCode.Mouse0)){
-            if(weapon != null)
-            {
-                weapon.Shoot();
-            }
-        }
-        
+
         // Convert mouse position into Unity coordinate system (World).
         if (Camera.main != null) _lookDirection = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         
     }
 
     void Move(){
+        float actMoveSpeed = increasedMovement != null ? increasedMovement.GetCurrentSpeed() : moveSpeed;
         // Increase speed if shift is pressed or held.
         if(Input.GetKey(KeyCode.LeftShift)){
-            rb.velocity = new Vector2(_moveDirection.x * moveSpeed * 2, _moveDirection.y * moveSpeed * 2);
+            rb.velocity = new Vector2(_moveDirection.x * actMoveSpeed * 2, _moveDirection.y * actMoveSpeed * 2);
         }
         else{
-            rb.velocity = new Vector2(_moveDirection.x * moveSpeed, _moveDirection.y * moveSpeed);
+            rb.velocity = new Vector2(_moveDirection.x * actMoveSpeed, _moveDirection.y * actMoveSpeed);
         }
     }
     
