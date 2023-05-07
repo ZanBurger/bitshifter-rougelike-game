@@ -11,7 +11,7 @@ public class PlayerController : MonoBehaviour
     public float moveSpeed;
     public Rigidbody2D rb;
     private Vector2 _moveDirection;
-
+    private Teleport teleport;
     private IncreasedMovement increasedMovement;
     // Shooting
     private Vector2 _lookDirection;
@@ -58,6 +58,11 @@ public class PlayerController : MonoBehaviour
         }
         else{
             rb.velocity = new Vector2(_moveDirection.x * actMoveSpeed, _moveDirection.y * actMoveSpeed);
+        }
+
+        if (teleport == null) teleport = gameObject.GetComponent<Teleport>();
+        if (Input.GetKey(KeyCode.Q) && teleport != null && !teleport.onCooldown){
+            teleport.TeleportPlayer();
         }
     }
     
