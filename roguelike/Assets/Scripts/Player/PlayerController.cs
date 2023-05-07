@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Player;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -18,6 +19,13 @@ public class PlayerController : MonoBehaviour
     void Start(){
         moveSpeed = 5;
         rb = GetComponent<Rigidbody2D>();
+        IncreasedMovement increasedMovement = GetComponent<IncreasedMovement>();
+        
+        // Used for testing purposes.
+        if (increasedMovement != null)
+        {
+            increasedMovement.playerController = this;
+        }
     }
 
     // Update is called once per frame, because of that we shouldn't do physics here.
@@ -31,6 +39,8 @@ public class PlayerController : MonoBehaviour
         Move();
         AimDirection();
     }
+    
+    
 
     void ProcessInputs(){
         float moveX = Input.GetAxisRaw("Horizontal"); // Raw gives u either 0 or 1.

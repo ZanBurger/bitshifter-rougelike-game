@@ -276,6 +276,21 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.64, y: 0.64}
   m_EdgeRadius: 0
+--- !u!114 &196778644
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 196778632}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 987d4ff26717c562bbba7a74e9b12643, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  durationSeconds: 10
+  speedMultiplier: 50
+  playerController: {fileID: 0}
 --- !u!1 &374777252
 GameObject:
   m_ObjectHideFlags: 0
