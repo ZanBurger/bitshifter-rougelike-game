@@ -36,18 +36,17 @@ public class Weapon : MonoBehaviour
     {
         if (Input.GetButton(fireButton) && Time.time >= nextFireTime)
         {
-            InstantiateBullet("bullet");
+            StartCoroutine(InstantiateBullet("bullet"));
             nextFireTime = Time.time + currentFirerate;
         }
-        else if(Input.GetKeyDown(KeyCode.Space))
-        {
-            InstantiateBullet("bomb");
+        else if(Input.GetKeyDown(KeyCode.Space)){
+            StartCoroutine(InstantiateBullet("bomb"));
         }
 
         
     }
 
-    private void InstantiateBullet(string type)
+    IEnumerator InstantiateBullet(string type)
     {
         if (equippedMultiShot && type != "bomb")
         {
@@ -70,9 +69,12 @@ public class Weapon : MonoBehaviour
         }
         else if (type == "bomb" && !bombOnCooldown)
         {
+            bombOnCooldown = true;
             GameObject bombInstance = Instantiate(bombPrefab, firePoint.position, firePoint.rotation);
             Rigidbody2D rb = bombInstance.GetComponent<Rigidbody2D>();
             rb.AddForce(firePoint.up * bulletForce, ForceMode2D.Impulse);
+            yield return new WaitForSeconds(4);
+            bombOnCooldown = false;
         }
 
         else if(type == "bullet" && !equippedMultiShot)
@@ -84,6 +86,7 @@ public class Weapon : MonoBehaviour
             Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
             rb.AddForce(firePoint.up * bulletForce, ForceMode2D.Impulse);
         }
+        yield return null;
     }
 
 
