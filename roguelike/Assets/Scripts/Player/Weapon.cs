@@ -10,8 +10,9 @@ public class Weapon : MonoBehaviour
     private float nextFireTime = 0f;
     private float currentFirerate;
     private IncreasedFirerate increasedFirerate;
-    bool equippedMultiShot = false;
-
+    private bool equippedMultiShot = false;
+    private bool bombOnCooldown = false;
+    public GameObject bombPrefab;
     private void EquipIncreasedFirerate()
     {
         increasedFirerate = GetComponent<IncreasedFirerate>();
@@ -27,21 +28,28 @@ public class Weapon : MonoBehaviour
             firePoint = transform;
         }
         currentFirerate = 0.25f; // Higher number = slower firerate
-       //EquipIncreasedFirerate();
+        EquipIncreasedFirerate();
+
     }
 
     void Update()
     {
         if (Input.GetButton(fireButton) && Time.time >= nextFireTime)
         {
-            InstantiateBullet();
+            InstantiateBullet("bullet");
             nextFireTime = Time.time + currentFirerate;
         }
+        else if(Input.GetKeyDown(KeyCode.Space))
+        {
+            InstantiateBullet("bomb");
+        }
+
+        
     }
 
-    private void InstantiateBullet()
+    private void InstantiateBullet(string type)
     {
-        if (equippedMultiShot)
+        if (equippedMultiShot && type != "bomb")
         {
             // Create three bullets from the Bullet Prefab
             GameObject bullet1 = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
@@ -60,7 +68,14 @@ public class Weapon : MonoBehaviour
             Rigidbody2D rb3 = bullet3.GetComponent<Rigidbody2D>();
             rb3.AddForce(Quaternion.Euler(0, 0, 25) * firePoint.up * bulletForce, ForceMode2D.Impulse);
         }
-        else
+        else if (type == "bomb" && !bombOnCooldown)
+        {
+            GameObject bombInstance = Instantiate(bombPrefab, firePoint.position, firePoint.rotation);
+            Rigidbody2D rb = bombInstance.GetComponent<Rigidbody2D>();
+            rb.AddForce(firePoint.up * bulletForce, ForceMode2D.Impulse);
+        }
+
+        else if(type == "bullet" && !equippedMultiShot)
         {
             // Create a single bullet from the Bullet Prefab
             GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
@@ -76,4 +91,6 @@ public class Weapon : MonoBehaviour
     {
         currentFirerate = newFirerate;
     }
+    
+    
 }

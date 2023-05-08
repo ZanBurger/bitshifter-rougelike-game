@@ -13,9 +13,10 @@ public class PlayerController : MonoBehaviour
     private Vector2 _moveDirection;
     private Teleport teleport;
     private IncreasedMovement increasedMovement;
-    // Shooting
+    
     private Vector2 _lookDirection;
 
+    bool unlockedRun = false;
     // Start is called before the first frame update
     void Start(){
         moveSpeed = 5;
@@ -53,8 +54,8 @@ public class PlayerController : MonoBehaviour
     void Move(){
         float actMoveSpeed = increasedMovement != null ? increasedMovement.GetCurrentSpeed() : moveSpeed;
         // Increase speed if shift is pressed or held.
-        if(Input.GetKey(KeyCode.LeftShift)){
-            rb.velocity = new Vector2(_moveDirection.x * actMoveSpeed * 2, _moveDirection.y * actMoveSpeed * 2);
+        if(Input.GetKey(KeyCode.LeftShift) && unlockedRun){
+            rb.velocity = new Vector2(_moveDirection.x * actMoveSpeed * 1.5f, _moveDirection.y * actMoveSpeed * 1.5f);
         }
         else{
             rb.velocity = new Vector2(_moveDirection.x * actMoveSpeed, _moveDirection.y * actMoveSpeed);
@@ -88,4 +89,6 @@ public class PlayerController : MonoBehaviour
             ChangeScene.Instance.moveToPreviousScene();
         }
     }
+    
+    
 }
