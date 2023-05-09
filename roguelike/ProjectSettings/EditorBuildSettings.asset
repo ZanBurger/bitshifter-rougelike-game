@@ -12,12 +12,15 @@ EditorBuildSettings:
     path: Assets/Scenes/SampleScene.unity
     guid: 2cda990e2423bbf4892e6590ba056729
   - enabled: 1
-    path: Assets/Scenes/demoLevel.unity
+    path: Assets/Scenes/Level1/demoLevel.unity
     guid: 3187fc758f046e649a54cc7f66c1aa1d
   - enabled: 1
-    path: Assets/Scenes/hall1.unity
+    path: Assets/Scenes/Level1/hall1.unity
     guid: 3470c2f5c0df27e4d99e681b7f723614
   - enabled: 1
-    path: Assets/Scenes/BossRoom1.unity
+    path: Assets/Scenes/Level1/BossRoom1.unity
     guid: be2c2eefc055fed43a57c241ada03317
+  - enabled: 1
+    path: Assets/Scenes/Level2/level2start.unity
+    guid: 58e78a2e95c64034a96e4c93215bf24b
   m_configObjects: {}
