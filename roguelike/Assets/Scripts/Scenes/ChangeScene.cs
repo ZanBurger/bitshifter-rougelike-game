@@ -31,8 +31,12 @@ public class ChangeScene : MonoBehaviour
             nextScene = "BossRoom1";
             previousScene = "demoLevel";
         }
-        if (scene.name == "level2start"){
+        else if (scene.name == "level2start"){
             nextScene = "level2hall";
+            previousScene = null;
+        }
+        else if (scene.name == "level2hall"){
+            nextScene = "level2boss";
             previousScene = null;
         }
     }
