@@ -4,10 +4,9 @@ using UnityEngine;
 
 public class PlaySound : MonoBehaviour
 {
-    public AudioSource buttonSound;
-
     public void buttonClicked()
     {
-        buttonSound.Play();
+        FindObjectOfType<AudioManager>().Play("ClickSound");
+
     }
 }

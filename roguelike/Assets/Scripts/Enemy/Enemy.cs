@@ -31,7 +31,7 @@ public class Enemy : MonoBehaviour
             if (weapon != null && _player != null)
             {
                 weapon.firePoint.up = _player.position - transform.position;
-                weapon.Shoot();
+                //weapon.Shoot();
             }
             _frameCounter = 0;
         }
