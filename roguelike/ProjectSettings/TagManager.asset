@@ -12,6 +12,7 @@ TagManager:
   - NextScene
   - PreviousScene
   - FirePoint
+  - Breakable
   layers:
   - Default
   - TransparentFX
