@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Player;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -10,13 +11,19 @@ public class PlayerController : MonoBehaviour
     public float moveSpeed;
     public Rigidbody2D rb;
     private Vector2 _moveDirection;
-    // Shooting
+    private Teleport teleport;
+    private IncreasedMovement increasedMovement;
+    
     private Vector2 _lookDirection;
-    public Weapon weapon;
 
+    bool unlockedRun = false;
     // Start is called before the first frame update
     void Start(){
         moveSpeed = 5;
+        rb = GetComponent<Rigidbody2D>();
+        
+        increasedMovement = gameObject.AddComponent<IncreasedMovement>();
+        increasedMovement.playerController = this;
     }
 
     // Update is called once per frame, because of that we shouldn't do physics here.
@@ -30,30 +37,33 @@ public class PlayerController : MonoBehaviour
         Move();
         AimDirection();
     }
+    
+    
 
     void ProcessInputs(){
         float moveX = Input.GetAxisRaw("Horizontal"); // Raw gives u either 0 or 1.
         float moveY = Input.GetAxisRaw("Vertical");
 
         _moveDirection = new Vector2(moveX, moveY);
-        
-        // Shoot on left click.
-        if(Input.GetKeyDown(KeyCode.Mouse0)){
-            weapon.Shoot();
-        }
-        
+
         // Convert mouse position into Unity coordinate system (World).
         if (Camera.main != null) _lookDirection = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         
     }
 
     void Move(){
+        float actMoveSpeed = increasedMovement != null ? increasedMovement.GetCurrentSpeed() : moveSpeed;
         // Increase speed if shift is pressed or held.
-        if(Input.GetKey(KeyCode.LeftShift)){
-            rb.velocity = new Vector2(_moveDirection.x * moveSpeed * 2, _moveDirection.y * moveSpeed * 2);
+        if(Input.GetKey(KeyCode.LeftShift) && unlockedRun){
+            rb.velocity = new Vector2(_moveDirection.x * actMoveSpeed * 1.5f, _moveDirection.y * actMoveSpeed * 1.5f);
         }
         else{
-            rb.velocity = new Vector2(_moveDirection.x * moveSpeed, _moveDirection.y * moveSpeed);
+            rb.velocity = new Vector2(_moveDirection.x * actMoveSpeed, _moveDirection.y * actMoveSpeed);
+        }
+
+        if (teleport == null) teleport = gameObject.GetComponent<Teleport>();
+        if (Input.GetKey(KeyCode.Q) && teleport != null && !teleport.onCooldown){
+            teleport.TeleportPlayer();
         }
     }
     
@@ -79,4 +89,6 @@ public class PlayerController : MonoBehaviour
             ChangeScene.Instance.moveToPreviousScene();
         }
     }
+    
+    
 }
