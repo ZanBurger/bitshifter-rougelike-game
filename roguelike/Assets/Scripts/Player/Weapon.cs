@@ -82,6 +82,8 @@ public class Weapon : MonoBehaviour
             // Create a single bullet from the Bullet Prefab
             GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
 
+            FindObjectOfType<AudioManager>().Play("ShootSound");
+
             // Add velocity to the bullet
             Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
             rb.AddForce(firePoint.up * bulletForce, ForceMode2D.Impulse);
