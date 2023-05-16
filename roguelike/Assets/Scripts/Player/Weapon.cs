@@ -42,8 +42,16 @@ public class Weapon : MonoBehaviour
         else if(Input.GetKeyDown(KeyCode.Space)){
             StartCoroutine(InstantiateBullet("bomb"));
         }
+    }
 
-        
+    public void Shoot()
+    {
+        // Create the Bullet from the Bullet Prefab
+        GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
+        // Add velocity to the bullet
+        Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
+        rb.AddForce(firePoint.up * bulletForce, ForceMode2D.Impulse);
+
     }
 
     IEnumerator InstantiateBullet(string type)
