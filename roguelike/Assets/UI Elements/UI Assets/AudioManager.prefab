@@ -60,9 +60,9 @@ MonoBehaviour:
     loop: 0
     source: {fileID: 0}
   - name: ShootSound
-    clip: {fileID: 8300000, guid: 1525089fe887dee40810f284e26a40b5, type: 3}
+    clip: {fileID: 8300000, guid: a952976527bf65e4f8cc37bb1eddf7b6, type: 3}
     group: {fileID: 24300002, guid: b089b1ef2f5cc2d4eaaf22544cee0ff4, type: 2}
     volume: 0.5
-    pitch: 1
+    pitch: 2.55
     loop: 0
     source: {fileID: 0}
