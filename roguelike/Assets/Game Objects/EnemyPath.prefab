@@ -194,6 +194,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7be6279cfd5a0c648acce27a2e3e78ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pickUpPrefab: {fileID: 2148287775232270565, guid: d2eb500c3fd595a42b3b7d948936b8e7, type: 3}
   weapon: {fileID: 0}
   framesBetwenShoot: 0
 --- !u!114 &1587693165252704387
