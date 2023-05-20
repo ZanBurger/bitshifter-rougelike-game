@@ -26,13 +26,12 @@ public class Enemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(weapon == null) return;
+        if(_player == null) return;
         if(_frameCounter == framesBetwenShoot)
         {
-            if (weapon != null && _player != null)
-            {
-                weapon.firePoint.up = _player.position - transform.position;
-                //weapon.Shoot();
-            }
+            weapon.firePoint.up = _player.position - transform.position;
+            weapon.Shoot();
             _frameCounter = 0;
         }
         _frameCounter++;
@@ -45,9 +44,6 @@ public class Enemy : MonoBehaviour
         {
             Destroy(gameObject);
             other.gameObject.GetComponent<Helth>().TakeDamage(1);
-
         }
     }
-
-
 }

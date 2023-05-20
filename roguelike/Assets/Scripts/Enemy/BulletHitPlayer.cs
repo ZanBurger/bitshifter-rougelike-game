@@ -23,6 +23,5 @@ public class BulletHitPlayer : MonoBehaviour
         {
             Destroy(gameObject);
         }
-
     }
 }

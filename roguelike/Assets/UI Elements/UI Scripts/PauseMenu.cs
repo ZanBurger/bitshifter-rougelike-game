@@ -25,6 +25,10 @@ public class PauseMenu : MonoBehaviour
         }
     }
 
+    public void buttonClicked(){
+        FindObjectOfType<AudioManager>().Play("ClickSound");
+    }
+
     public void Resume()
     {
         pauseMenuUI.SetActive(false);
