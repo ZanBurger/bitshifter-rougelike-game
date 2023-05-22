@@ -208,9 +208,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7be6279cfd5a0c648acce27a2e3e78ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pickUpPrefab: {fileID: 2148287775232270565, guid: d2eb500c3fd595a42b3b7d948936b8e7, type: 3}
-  weapon: {fileID: 0}
-  framesBetwenShoot: 0
+  bulletPrefab: {fileID: 9030852861077885179, guid: 940d2dfa9a4934c489c8334da660fc1f, type: 3}
+  bombPrefab: {fileID: 9030852861077885179, guid: 4f41cf0bf0906f54eb268dd310a74e72, type: 3}
 --- !u!114 &1587693165252704387
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -224,6 +223,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   livePoints: 1
+  maxHealth: 8
+  healthbar: {fileID: 0}
 --- !u!58 &-6021575124584414249
 CircleCollider2D:
   m_ObjectHideFlags: 0
