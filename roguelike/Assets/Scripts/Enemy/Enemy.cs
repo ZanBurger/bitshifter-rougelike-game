@@ -2,12 +2,16 @@ using Pathfinding;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
+using UnityEditor.SceneManagement;
 using UnityEngine;
+//using static Pathfinding.Util.GridLookup<T>;
+using static UnityEditor.PlayerSettings;
 
 
 public class Enemy : MonoBehaviour
 {
-    public Weapon weapon;
+    Weapon weapon;
+    public GameObject bulletPrefab;
     public int framesBetwenShoot;
     Transform _player;
     int _frameCounter = 0;
@@ -26,12 +30,11 @@ public class Enemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(weapon == null) return;
+        if(bulletPrefab == null) return;
         if(_player == null) return;
         if(_frameCounter == framesBetwenShoot)
         {
-            weapon.firePoint.up = _player.position - transform.position;
-            weapon.Shoot();
+            Shoot();
             _frameCounter = 0;
         }
         _frameCounter++;
@@ -45,5 +48,14 @@ public class Enemy : MonoBehaviour
             Destroy(gameObject);
             other.gameObject.GetComponent<Helth>().TakeDamage(1);
         }
+    }
+
+    void Shoot()
+    {
+        
+        GameObject bullet = Instantiate(bulletPrefab, transform.position, Quaternion.identity);
+        // Add velocity to the bullet
+        Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
+        rb.AddForce(transform.up * 2, ForceMode2D.Impulse);
     }
 }
