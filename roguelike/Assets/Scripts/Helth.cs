@@ -5,9 +5,14 @@ using UnityEngine;
 public class Helth : MonoBehaviour
 {
     public int livePoints = 1;
-    // Start is called before the first frame update
+    public int maxHealth = 8;
+
+    public Healthbar healthbar;
+
     void Start()
     {
+        if (healthbar == null) return;
+        healthbar.SetMaxHealth(maxHealth);
         
     }
 
@@ -23,6 +28,10 @@ public class Helth : MonoBehaviour
         if (livePoints <= 0)
         {
             Destroy(gameObject);
+        }
+        if(healthbar != null)
+        {
+            healthbar.setHealth(livePoints);
         }
     }
 }
