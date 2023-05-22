@@ -39,6 +39,14 @@ public class ChangeScene : MonoBehaviour
             nextScene = "level2boss";
             previousScene = null;
         }
+        else if (scene.name == "level3start"){
+            nextScene = "level3hall";
+            previousScene = null;
+        }
+        else if (scene.name == "level3hall"){
+            nextScene = "level3boss";
+            previousScene = null;
+        }
     }
 
     public void moveToNextScene(){

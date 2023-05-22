@@ -7,6 +7,5 @@ public class PlaySound : MonoBehaviour
     public void buttonClicked()
     {
         FindObjectOfType<AudioManager>().Play("ClickSound");
-
     }
 }
