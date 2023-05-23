@@ -202,7 +202,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7476283610213766273, guid: f39840469e7717f45b3814f9300d1d92, type: 3}
       propertyPath: m_RootOrder
-      value: 6
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 7476283610213766273, guid: f39840469e7717f45b3814f9300d1d92, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2102,7 +2102,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &542314506
 PrefabInstance:
@@ -2199,6 +2199,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: OverScreen
       objectReference: {fileID: 0}
+    - target: {fileID: 8427919946439667228, guid: 9a84a2296433b4241bfbb7dee28f89a5, type: 3}
+      propertyPath: healthBarUI
+      value: 
+      objectReference: {fileID: 1697499438}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9a84a2296433b4241bfbb7dee28f89a5, type: 3}
 --- !u!1001 &643087850
@@ -2226,7 +2230,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 634355169023434409, guid: 49fd22f5a88844646a17897d09a31e36, type: 3}
       propertyPath: m_RootOrder
-      value: 7
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 634355169023434409, guid: 49fd22f5a88844646a17897d09a31e36, type: 3}
       propertyPath: m_AnchorMax.x
@@ -2334,7 +2338,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1518960685476742405, guid: 9c9cc445ea32e284b97d4b8cc593f4be, type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 1518960685476742405, guid: 9c9cc445ea32e284b97d4b8cc593f4be, type: 3}
       propertyPath: m_AnchorMax.x
@@ -2539,8 +2543,13 @@ Transform:
   - {fileID: 1081514444}
   - {fileID: 237994513}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1697499438 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 634355169023434413, guid: 49fd22f5a88844646a17897d09a31e36, type: 3}
+  m_PrefabInstance: {fileID: 643087850}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1816251158
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2554,7 +2563,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2802128431560706414, guid: ad13c254397579b488b2f4a0fd22df6c, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 2802128431560706414, guid: ad13c254397579b488b2f4a0fd22df6c, type: 3}
       propertyPath: m_LocalPosition.x

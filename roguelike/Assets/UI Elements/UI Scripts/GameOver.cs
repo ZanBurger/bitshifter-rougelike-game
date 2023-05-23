@@ -7,6 +7,8 @@ public class GameOver : MonoBehaviour
 {
     GameObject _player; 
     public GameObject gameOverUI;
+    public GameObject healthBarUI;
+    public GameObject bossBarUI;
 
     void Start()
     {
@@ -21,6 +23,13 @@ public class GameOver : MonoBehaviour
     {
         if(_player == null){
             Time.timeScale = 0f;
+            healthBarUI.SetActive(false);
+
+            if(bossBarUI != null)
+            { 
+                bossBarUI.SetActive(false);
+            }
+           
             gameOverUI.SetActive(true);
         }
     }
