@@ -10,7 +10,6 @@ public class Helth : MonoBehaviour
     public int maxHealth = 8;
 
     public Healthbar healthbar;
-    public GameObject gameOverUI;
 
     void Start()
     {
@@ -31,8 +30,6 @@ public class Helth : MonoBehaviour
             CheckAbilityStatus(PlayerController.deathAmount);
             Debug.Log("Death amount: " + PlayerController.deathAmount);
             Destroy(gameObject);
-            Time.timeScale = 1f;
-            gameOverUI.SetActive(true);
         }
         if(healthbar != null)
         {

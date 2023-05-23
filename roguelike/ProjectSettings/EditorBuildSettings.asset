@@ -21,11 +21,11 @@ EditorBuildSettings:
     path: Assets/Scenes/Level2/level2start.unity
     guid: 58e78a2e95c64034a96e4c93215bf24b
   - enabled: 1
-    path: Assets/Scenes/Level2/level2boss.unity
-    guid: 2bb09661e248f3f45b17e49a8ecc702f
-  - enabled: 1
     path: Assets/Scenes/Level2/level2hall.unity
     guid: 2b3c3206963b4f74fb312bdef2974288
+  - enabled: 1
+    path: Assets/Scenes/Level2/level2boss.unity
+    guid: 2bb09661e248f3f45b17e49a8ecc702f
   - enabled: 1
     path: Assets/Scenes/Level3/level3start.unity
     guid: f66f9b057bf0a724ea92bca49bccf91b
