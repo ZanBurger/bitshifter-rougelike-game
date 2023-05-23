@@ -43,7 +43,8 @@ public class PSplit : MonoBehaviour
 
         if (other.gameObject.CompareTag("Player"))
         {
-            Destroy(gameObject);
+            other.gameObject.GetComponent<Helth>().TakeDamage(1);
+            Split();
         }
         // If a bullet hits an obstacle (walls..), just destroy the bullet.
         else if (other.gameObject.CompareTag("Obstacle"))

@@ -48,7 +48,7 @@ public class PBomb : MonoBehaviour
         // If a bullet hits an obstacle (walls..), just destroy the bullet.
         else if (other.gameObject.CompareTag("Obstacle"))
         {
-            Explode();
+            Destroy(gameObject);
         }
     }
 }

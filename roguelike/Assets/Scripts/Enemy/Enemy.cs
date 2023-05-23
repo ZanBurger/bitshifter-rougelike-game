@@ -22,10 +22,10 @@ public class Enemy : MonoBehaviour
     public int shootingType = 0;
     public int bulletType = 0;
     public int framesBetwenShoot = 60;
-
+    public int booletSpeet = 5;
     GameObject _player;
     int _frameCounter = 0;
-    int booletSpeet = 5;
+    
     // Start is called before the first frame update
     void Start()
     {
