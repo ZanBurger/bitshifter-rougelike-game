@@ -2191,6 +2191,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2970117290678038057, guid: 93349dd17af4e26438c29f75cc2896e8, type: 3}
+      propertyPath: shootType
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2970117290678038057, guid: 93349dd17af4e26438c29f75cc2896e8, type: 3}
+      propertyPath: bulletType
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2970117290678038057, guid: 93349dd17af4e26438c29f75cc2896e8, type: 3}
+      propertyPath: shootingType
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3857285558071115291, guid: 93349dd17af4e26438c29f75cc2896e8, type: 3}
       propertyPath: targets.Array.size
       value: 3

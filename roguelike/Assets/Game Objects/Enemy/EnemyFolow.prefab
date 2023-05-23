@@ -210,6 +210,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletPrefab: {fileID: 9030852861077885179, guid: 940d2dfa9a4934c489c8334da660fc1f, type: 3}
   bombPrefab: {fileID: 9030852861077885179, guid: 4f41cf0bf0906f54eb268dd310a74e72, type: 3}
+  splitStarPrefab: {fileID: 9030852861077885179, guid: 06aecfbbfb90fa24f8699e6b7609bfdf, type: 3}
+  splitThreePrefab: {fileID: 9030852861077885179, guid: c6d2b8db20420d74cb0dd1aa98a7855f, type: 3}
+  shootingType: 4
+  bulletType: 4
+  framesBetwenShoot: 60
 --- !u!114 &1587693165252704387
 MonoBehaviour:
   m_ObjectHideFlags: 0

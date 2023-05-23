@@ -2,10 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BulletHitPlayer : MonoBehaviour
+public class PBullet : MonoBehaviour
 {
     public int damage = 1;
-  
     private void Start()
     {
         //Destroy after 2s if we don't hit anything.

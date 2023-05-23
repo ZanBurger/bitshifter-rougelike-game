@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerHitBomb : MonoBehaviour
+public class PBomb : MonoBehaviour
 {
     public GameObject Player;
     public int damage = 5;

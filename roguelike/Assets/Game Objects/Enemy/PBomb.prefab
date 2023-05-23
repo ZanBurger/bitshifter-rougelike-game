@@ -12,10 +12,9 @@ GameObject:
   - component: {fileID: 9030852861077885180}
   - component: {fileID: 9030852861077885152}
   - component: {fileID: 9030852861077885183}
-  - component: {fileID: -8731085178361481471}
-  - component: {fileID: 3394861583208639572}
+  - component: {fileID: 684951232537690561}
   m_Layer: 0
-  m_Name: PlayerHitBomb
+  m_Name: PBomb
   m_TagString: Bullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -125,22 +124,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 4
---- !u!114 &-8731085178361481471
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9030852861077885179}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ef6cd0a526aa5a242b80e0bc27788fa0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  damage: 1
-  isBomb: 0
-  Player: {fileID: 0}
---- !u!114 &3394861583208639572
+--- !u!114 &684951232537690561
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -152,3 +136,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43947ddcec7e3ae4481b0f93ea2f9add, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Player: {fileID: 0}
+  damage: 2
+  distacneToDealDamage: 1
+  timeToExplode: 60

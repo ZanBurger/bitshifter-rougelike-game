@@ -13,13 +13,18 @@ public class Enemy : MonoBehaviour
    
     [SerializeField] GameObject bulletPrefab;
     [SerializeField] GameObject bombPrefab;
-    int framesBetwenShoot;
+    [SerializeField] GameObject splitStarPrefab;
+    [SerializeField] GameObject splitThreePrefab;
+
+
+    public int shootingType = 0;
+    public int bulletType = 0;
+    public int framesBetwenShoot = 60;
+
     GameObject _player;
     int _frameCounter = 0;
     GameObject bulletToShoot;
     int booletSpeet = 5;
-    
-
     // Start is called before the first frame update
     void Start()
     {
@@ -30,19 +35,36 @@ public class Enemy : MonoBehaviour
         GetComponent<Helth>().livePoints = Random.Range(1, 3);
         booletSpeet = Random.Range(9, 10);
 
-        var BombSettings = bombPrefab.GetComponent<PlayerHitBomb>();
+        var BombSettings = bombPrefab.GetComponent<PBomb>();
         BombSettings.Player = _player;
 
-        if (Random.value > 0.5)
+        switch (bulletType)
         {
-            framesBetwenShoot = 60;
-            bulletToShoot = bulletPrefab;
+            case 0:
+                bulletToShoot = bulletPrefab;
+                break;
+            case 1:
+                bulletToShoot = bombPrefab;
+                break;
+            case 2:
+                bulletToShoot = splitStarPrefab;
+                break;
+            case 3:
+                bulletToShoot = splitThreePrefab;
+                break;
+            default:
+                int val = Random.Range(0,3);
+                if(val == 0) bulletToShoot = bulletPrefab;
+                if(val == 1) bulletToShoot = bombPrefab;
+                if(val == 2) bulletToShoot = splitStarPrefab;
+                if(val == 3) bulletToShoot = splitThreePrefab;
+                break;
         }
-        else
-        {
-            framesBetwenShoot = 120;
-            bulletToShoot = bombPrefab;
-        }
+
+        if(shootingType > 2)
+            shootingType = Random.Range(0, 2);
+            
+        
 
         var aiDest = GetComponent<AIDestinationSetter>();
         if (aiDest == null) return;
@@ -53,9 +75,28 @@ public class Enemy : MonoBehaviour
     void FixedUpdate()
     {
         if(_player == null) return;
+
+        //get distance to player
         if(_frameCounter == framesBetwenShoot)
         {
-            ShootTree();
+            var distance = Vector2.Distance(transform.position, _player.transform.position);
+            if (distance > 10) return;
+            switch (shootingType)
+            {
+                case 0:
+                    ShootOne();
+                    break;
+                case 1:
+                    ShootAll();
+                    break;
+                case 2:
+                    ShootTree();
+                    break;
+                default:
+                    
+                    break;
+            }
+           
             _frameCounter = 0;
         }
         _frameCounter++;
