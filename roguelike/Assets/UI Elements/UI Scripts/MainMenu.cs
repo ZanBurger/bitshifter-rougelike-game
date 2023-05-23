@@ -10,7 +10,11 @@ public class MainMenu : MonoBehaviour
     public void StartGame()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-        PlayerController.deathAmount = 4;
+        PlayerController.deathAmount = 0;
+        PlayerController.unlockedTeleport = false;
+        PlayerController.unlockedMultishot = false;
+        PlayerController.unlockedBomb = false;
+        PlayerController.unlockedRun = false;
     }
     
     public void ExitGame()

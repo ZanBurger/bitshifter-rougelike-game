@@ -22,7 +22,6 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     void Start(){
         moveSpeed = 5;
-        Debug.Log("Death amount: " + deathAmount);
         rb = GetComponent<Rigidbody2D>();
         
         increasedMovement.playerController = this;

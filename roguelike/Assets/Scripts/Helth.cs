@@ -22,13 +22,6 @@ public class Helth : MonoBehaviour
         livePoints -= damage;
         if (livePoints <= 0)
         {
-            if (gameObject.CompareTag("Player"))
-            {
-                PlayerController.deathAmount++;
-                Debug.Log("Death amount: " + PlayerController.deathAmount);
-                CheckAbilityStatus(PlayerController.deathAmount);
-
-            }
             Destroy(gameObject);
         }
         if(healthbar != null)
@@ -37,27 +30,5 @@ public class Helth : MonoBehaviour
         }
     }
 
-    private void CheckAbilityStatus(int deathAmount)
-    {
-        if (deathAmount >= 2 && !PlayerController.unlockedTeleport)
-        {
-            PlayerController.unlockedTeleport = true;
-            Debug.Log("Teleport unlocked");
-        }
-        if (deathAmount >= 4 && !PlayerController.unlockedMultishot)
-        {
-            PlayerController.unlockedMultishot = true;
-            Debug.Log("Multishot unlocked");
-        }
-        if (deathAmount >= 6)
-        {
-            PlayerController.unlockedBomb = true;
-            Debug.Log("Bomb unlocked");
-        }
-        if (deathAmount >= 7)
-        {
-            PlayerController.unlockedRun = true;
-            Debug.Log("Run unlocked");
-        }
-    }
+    
 }
