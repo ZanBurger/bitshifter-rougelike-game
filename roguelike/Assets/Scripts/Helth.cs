@@ -2,12 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class Helth : MonoBehaviour
 {
     public int livePoints = 1;
     public int maxHealth = 8;
 
     public Healthbar healthbar;
+    public GameObject gameOverUI;
 
     void Start()
     {
@@ -28,6 +30,8 @@ public class Helth : MonoBehaviour
         if (livePoints <= 0)
         {
             Destroy(gameObject);
+            Time.timeScale = 1f;
+            gameOverUI.SetActive(true);
         }
         if(healthbar != null)
         {
