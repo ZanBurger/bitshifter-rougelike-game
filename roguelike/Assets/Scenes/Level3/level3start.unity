@@ -3015,6 +3015,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea2cc4e98f0c2ad4880ca7955be5ee7b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &415631759 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 634355169465890868, guid: 49fd22f5a88844646a17897d09a31e36, type: 3}
+  m_PrefabInstance: {fileID: 415631757}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &490737655
 PrefabInstance:
   m_ObjectHideFlags: 0
