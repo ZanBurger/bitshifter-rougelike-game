@@ -46,7 +46,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemy: {fileID: 2802128431560706413, guid: ad13c254397579b488b2f4a0fd22df6c, type: 3}
   minSummonTime: 1
-  maxSummonTime: 5
+  maxSummonTime: 3
   summonRadius: 1
   minSummonAmount: 1
-  maxSummonAmount: 6
+  maxSummonAmount: 2

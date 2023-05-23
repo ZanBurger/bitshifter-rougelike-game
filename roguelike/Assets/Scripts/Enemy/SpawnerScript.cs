@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Pathfinding;
+using static UnityEditor.Experimental.GraphView.GraphView;
 
 public class SpawnerScript : MonoBehaviour
 {
@@ -15,16 +16,24 @@ public class SpawnerScript : MonoBehaviour
     int summonAmount = 1;
     float summon = 0;
 
+    GameObject _player;
     // Start is called before the first frame update
     void Start()
     {
-        
+        var gameObjectP = GameObject.Find("Player");
+        if (gameObjectP == null) return;
+        _player = gameObjectP;
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         if( Time.fixedTime - summon > summonTime){
+
+            if(_player == null) return;
+            var distance = Vector2.Distance(transform.position, _player.transform.position);
+            if (distance > 25) return;
+
             for (int i = 0; i < summonAmount; i++)
             {
                 Vector2 pos = Random.insideUnitCircle * summonRadius;
