@@ -15,8 +15,8 @@ public class BulletHitEnemy : MonoBehaviour
         float dropChance = Random.value; // Generate random float between 0 and 1
        // If a bullet hits an enemy, destroy the enemy object and the bullet itself.
         if(other.gameObject.CompareTag("Enemy")){
-            // Enemy has a 20% chance of dropping an item
-            if (dropChance <= 0.2f)
+            // Enemy has a 10% chance of dropping an item
+            if (dropChance <= 0.1f)
             {
                 Instantiate(pickUpPrefab, transform.position, Quaternion.identity);
             }         

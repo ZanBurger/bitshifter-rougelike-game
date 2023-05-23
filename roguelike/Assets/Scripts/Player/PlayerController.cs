@@ -22,14 +22,23 @@ public class PlayerController : MonoBehaviour
         moveSpeed = 5;
         rb = GetComponent<Rigidbody2D>();
         
-        increasedMovement = gameObject.AddComponent<IncreasedMovement>();
         increasedMovement.playerController = this;
     }
 
     // Update is called once per frame, because of that we shouldn't do physics here.
-    void Update(){
+    void Update()
+    {
         ProcessInputs();
         FollowCamera();
+
+        if (increasedMovement == null )
+        {
+            increasedMovement = GetComponent<IncreasedMovement>();
+            if (increasedMovement != null)
+            {
+                increasedMovement.playerController = this;
+            }
+        }
     }
 
     //Called at fixed intervals instead of users frame rate -> Better for physics.

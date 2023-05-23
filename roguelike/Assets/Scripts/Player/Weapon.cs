@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Player;
 using UnityEngine;
 public class Weapon : MonoBehaviour
 {
@@ -28,12 +29,11 @@ public class Weapon : MonoBehaviour
             firePoint = transform;
         }
         currentFirerate = 0.25f; // Higher number = slower firerate
-        EquipIncreasedFirerate();
-
     }
 
     void Update()
     {
+        EquipIncreasedFirerate();
         if (Input.GetButton(fireButton) && Time.time >= nextFireTime)
         {
             StartCoroutine(InstantiateBullet("bullet"));
