@@ -105,7 +105,6 @@ MonoBehaviour:
   livePoints: 8
   maxHealth: 8
   healthbar: {fileID: 9080640175128037523, guid: 0470db9b55dc9714dac59ce47a044604, type: 3}
-  gameOverUI: {fileID: 0}
 --- !u!50 &8002174283985549435
 Rigidbody2D:
   serializedVersion: 4
@@ -157,6 +156,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 0
   rb: {fileID: 8002174283985549435}
+  initDeathAmount: 3
 --- !u!114 &311601932711197611
 MonoBehaviour:
   m_ObjectHideFlags: 0

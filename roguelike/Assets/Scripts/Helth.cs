@@ -8,14 +8,13 @@ public class Helth : MonoBehaviour
     private GameObject player;
     public int livePoints = 1;
     public int maxHealth = 8;
-
     public Healthbar healthbar;
 
     void Start()
     {
         if (healthbar == null) return;
         healthbar.SetMaxHealth(maxHealth);
-        
+       
     }
 
     public void TakeDamage(int damage)
@@ -26,9 +25,10 @@ public class Helth : MonoBehaviour
             if (gameObject.CompareTag("Player"))
             {
                 PlayerController.deathAmount++;
+                Debug.Log("Death amount: " + PlayerController.deathAmount);
+                CheckAbilityStatus(PlayerController.deathAmount);
+
             }
-            CheckAbilityStatus(PlayerController.deathAmount);
-            Debug.Log("Death amount: " + PlayerController.deathAmount);
             Destroy(gameObject);
         }
         if(healthbar != null)
@@ -39,19 +39,15 @@ public class Helth : MonoBehaviour
 
     private void CheckAbilityStatus(int deathAmount)
     {
-        if (deathAmount >= 2)
+        if (deathAmount >= 2 && !PlayerController.unlockedTeleport)
         {
             PlayerController.unlockedTeleport = true;
             Debug.Log("Teleport unlocked");
         }
-        if (deathAmount >= 4)
+        if (deathAmount >= 4 && !PlayerController.unlockedMultishot)
         {
-            Weapon weapon = GetComponent<Weapon>();
-            if (weapon != null && !weapon.equippedMultiShot)
-            {
-                weapon.equippedMultiShot = true;
-                Debug.Log("MultiShot unlocked");
-            }
+            PlayerController.unlockedMultishot = true;
+            Debug.Log("Multishot unlocked");
         }
         if (deathAmount >= 6)
         {

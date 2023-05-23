@@ -13,19 +13,22 @@ public class PlayerController : MonoBehaviour
     private Vector2 _moveDirection;
     private Teleport teleport;
     private IncreasedMovement increasedMovement;
-    public static int deathAmount = 0;
+    public static bool unlockedMultishot = false;
     public static bool unlockedTeleport = false;
     public static bool unlockedBomb = false;
     private Vector2 _lookDirection;
-
+    public static int deathAmount = 0; 
     public static bool  unlockedRun = false;
     // Start is called before the first frame update
     void Start(){
         moveSpeed = 5;
+        Debug.Log("Death amount: " + deathAmount);
         rb = GetComponent<Rigidbody2D>();
         
         increasedMovement.playerController = this;
     }
+
+    
 
     // Update is called once per frame, because of that we shouldn't do physics here.
     void Update()
