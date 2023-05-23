@@ -10,6 +10,7 @@ public class GameOver : MonoBehaviour
 
     void Start()
     {
+        Time.timeScale = 1f;
         var gameObjectP = GameObject.Find("Player");
         if (gameObjectP == null) return;
         _player = gameObjectP;
@@ -22,6 +23,12 @@ public class GameOver : MonoBehaviour
             Time.timeScale = 0f;
             gameOverUI.SetActive(true);
         }
+    }
+
+    public void Restart()
+    {
+        Time.timeScale = 1f;
+        SceneManager.LoadScene(1);
     }
 
     public void LoadMenu()
