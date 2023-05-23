@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 9030852861077885180}
   - component: {fileID: 9030852861077885152}
   - component: {fileID: 9030852861077885183}
-  - component: {fileID: -8731085178361481471}
+  - component: {fileID: 517084084263422128}
   m_Layer: 0
-  m_Name: BulletHitPlayer
+  m_Name: PSplitThree
   m_TagString: Bullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -77,7 +77,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
-  m_Color: {r: 0.89781404, g: 0.9339623, b: 0.5066305, a: 1}
+  m_Color: {r: 1, g: 0.58571523, b: 0.015686274, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -97,7 +97,7 @@ CircleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -124,7 +124,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 4
---- !u!114 &-8731085178361481471
+--- !u!114 &517084084263422128
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -133,6 +133,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 9030852861077885179}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ef6cd0a526aa5a242b80e0bc27788fa0, type: 3}
+  m_Script: {fileID: 11500000, guid: b5c4bcba1f929e043b5dad054917c351, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bulletPrefab: {fileID: 9030852861077885179, guid: 940d2dfa9a4934c489c8334da660fc1f, type: 3}
+  bombPrefab: {fileID: 9030852861077885179, guid: 4f41cf0bf0906f54eb268dd310a74e72, type: 3}
+  timeToSplit: 60
+  booletSpeet: 5
+  shootingType: 1
