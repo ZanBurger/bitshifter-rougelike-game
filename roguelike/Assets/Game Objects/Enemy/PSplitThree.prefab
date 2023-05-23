@@ -138,6 +138,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletPrefab: {fileID: 9030852861077885179, guid: 940d2dfa9a4934c489c8334da660fc1f, type: 3}
   bombPrefab: {fileID: 9030852861077885179, guid: 4f41cf0bf0906f54eb268dd310a74e72, type: 3}
-  timeToSplit: 60
+  timeToSplit: 30
   booletSpeet: 5
   shootingType: 1

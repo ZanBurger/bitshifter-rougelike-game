@@ -13,10 +13,12 @@ public class PlayerController : MonoBehaviour
     private Vector2 _moveDirection;
     private Teleport teleport;
     private IncreasedMovement increasedMovement;
-    
+    public static bool unlockedMultishot = false;
+    public static bool unlockedTeleport = false;
+    public static bool unlockedBomb = false;
     private Vector2 _lookDirection;
-
-    bool unlockedRun = false;
+    public static int deathAmount = 0; 
+    public static bool  unlockedRun = false;
     // Start is called before the first frame update
     void Start(){
         moveSpeed = 5;
@@ -24,6 +26,8 @@ public class PlayerController : MonoBehaviour
         
         increasedMovement.playerController = this;
     }
+
+    
 
     // Update is called once per frame, because of that we shouldn't do physics here.
     void Update()
@@ -71,7 +75,7 @@ public class PlayerController : MonoBehaviour
         }
 
         if (teleport == null) teleport = gameObject.GetComponent<Teleport>();
-        if (Input.GetKey(KeyCode.Q) && teleport != null && !teleport.onCooldown){
+        if (Input.GetKey(KeyCode.Q) && teleport != null && !teleport.onCooldown && unlockedTeleport){
             teleport.TeleportPlayer();
         }
     }
