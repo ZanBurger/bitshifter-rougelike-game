@@ -1,12 +1,14 @@
 using Pathfinding;
 using System.Collections;
 using System.Collections.Generic;
+using System.Numerics;
 using Unity.VisualScripting;
 using UnityEditor.SceneManagement;
 using UnityEngine;
 //using static Pathfinding.Util.GridLookup<T>;
 using static UnityEditor.PlayerSettings;
-
+using Quaternion = UnityEngine.Quaternion;
+using Vector2 = UnityEngine.Vector2;
 
 public class Enemy : MonoBehaviour
 {
@@ -38,31 +40,10 @@ public class Enemy : MonoBehaviour
         var BombSettings = bombPrefab.GetComponent<PBomb>();
         BombSettings.Player = _player;
 
-        switch (bulletType)
-        {
-            case 0:
-                bulletToShoot = bulletPrefab;
-                break;
-            case 1:
-                bulletToShoot = bombPrefab;
-                break;
-            case 2:
-                bulletToShoot = splitStarPrefab;
-                break;
-            case 3:
-                bulletToShoot = splitThreePrefab;
-                break;
-            default:
-                int val = Random.Range(0,3);
-                if(val == 0) bulletToShoot = bulletPrefab;
-                if(val == 1) bulletToShoot = bombPrefab;
-                if(val == 2) bulletToShoot = splitStarPrefab;
-                if(val == 3) bulletToShoot = splitThreePrefab;
-                break;
-        }
 
-        if(shootingType > 2)
-            shootingType = Random.Range(0, 2);
+        if (bulletType > 3) bulletType = Random.Range(0, 4);
+        
+        if(shootingType > 2) shootingType = Random.Range(0, 3);
             
         
 
@@ -115,8 +96,14 @@ public class Enemy : MonoBehaviour
     void ShootOne()
     {
         Vector2 vector2 = transform.position;
-        GameObject bullet = Instantiate(bulletToShoot, vector2, Quaternion.identity);
-       
+        GameObject bullet = bulletType switch
+        {
+            1 => (GameObject)Instantiate(bombPrefab, vector2, Quaternion.identity),
+            2 => (GameObject)Instantiate(splitStarPrefab, vector2, Quaternion.identity),
+            3 => (GameObject)Instantiate(splitThreePrefab, vector2, Quaternion.identity),
+            _ => (GameObject)Instantiate(bulletPrefab, vector2, Quaternion.identity),
+        };
+
         // Add velocity to the bullet
         Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
 
@@ -142,7 +129,13 @@ public class Enemy : MonoBehaviour
     {
         foreach (Vector2 direction in directions)
         {
-            GameObject bullet = Instantiate(bulletToShoot, transform.position, Quaternion.identity);
+            GameObject bullet = bulletType switch
+            {
+                1 => (GameObject)Instantiate(bombPrefab, transform.position, Quaternion.identity),
+                2 => (GameObject)Instantiate(splitStarPrefab, transform.position, Quaternion.identity),
+                3 => (GameObject)Instantiate(splitThreePrefab, transform.position, Quaternion.identity),
+                _ => (GameObject)Instantiate(bulletPrefab, transform.position, Quaternion.identity),
+            };
             Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
             rb.AddForce(direction * booletSpeet, ForceMode2D.Impulse);
         }
@@ -157,7 +150,13 @@ public class Enemy : MonoBehaviour
 
         for (int i = 0; i < 3; i++)
         {
-            GameObject bullet = Instantiate(bulletToShoot, vector2, Quaternion.identity);
+            GameObject bullet = bulletType switch
+            {
+                1 => (GameObject)Instantiate(bombPrefab, vector2, Quaternion.identity),
+                2 => (GameObject)Instantiate(splitStarPrefab, vector2, Quaternion.identity),
+                3 => (GameObject)Instantiate(splitThreePrefab, vector2, Quaternion.identity),
+                _ => (GameObject)Instantiate(bulletPrefab, vector2, Quaternion.identity),
+            };
             Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
 
             // Create a quaternion representing the rotation

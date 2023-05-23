@@ -38,6 +38,20 @@ public class PSplit : MonoBehaviour
         _frameCounter++;
     }
 
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+
+        if (other.gameObject.CompareTag("Player"))
+        {
+            Destroy(gameObject);
+        }
+        // If a bullet hits an obstacle (walls..), just destroy the bullet.
+        else if (other.gameObject.CompareTag("Obstacle"))
+        {
+            Split();
+        }
+    }
+
     void Split()
     {
         switch (shootingType)
