@@ -25,7 +25,6 @@ public class Enemy : MonoBehaviour
 
     GameObject _player;
     int _frameCounter = 0;
-    GameObject bulletToShoot;
     int booletSpeet = 5;
     // Start is called before the first frame update
     void Start()
@@ -34,18 +33,16 @@ public class Enemy : MonoBehaviour
         if (gameObjectP == null) return;
         _player = gameObjectP;
 
+
+
         GetComponent<Helth>().livePoints = Random.Range(1, 3);
         booletSpeet = Random.Range(9, 10);
 
         var BombSettings = bombPrefab.GetComponent<PBomb>();
         BombSettings.Player = _player;
 
-
         if (bulletType > 3) bulletType = Random.Range(0, 4);
-        
-        if(shootingType > 2) shootingType = Random.Range(0, 3);
-            
-        
+        if (shootingType > 2) shootingType = Random.Range(0, 3);
 
         var aiDest = GetComponent<AIDestinationSetter>();
         if (aiDest == null) return;
@@ -88,7 +85,7 @@ public class Enemy : MonoBehaviour
         // If a bullet hits an enemy, destroy the enemy object and the bullet itself.
         if (other.gameObject.CompareTag("Player"))
         {
-            Destroy(gameObject);
+           
             other.gameObject.GetComponent<Helth>().TakeDamage(1);
         }
     }
