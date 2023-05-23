@@ -51,6 +51,7 @@ public class Weapon : MonoBehaviour
         // Add velocity to the bullet
         Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
         rb.AddForce(firePoint.up * bulletForce, ForceMode2D.Impulse);
+        Debug.DrawLine(firePoint.position, firePoint.position + firePoint.up * 5f, Color.red, 1f);
 
     }
 
