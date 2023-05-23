@@ -24,9 +24,9 @@ public class Weapon : MonoBehaviour
     }
     void Start()
     {
-        if (firePoint == null)  
+        if (firePoint == null)
         {
-            firePoint = transform;
+            firePoint = transform.GetChild(0).GetComponent<Transform>(); // Assuming the firePoint is the first child of the Weapon object
         }
         currentFirerate = 0.25f; // Higher number = slower firerate
     }
@@ -90,7 +90,7 @@ public class Weapon : MonoBehaviour
             // Create a single bullet from the Bullet Prefab
             GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
 
-            FindObjectOfType<AudioManager>().Play("ShootSound");
+            // FindObjectOfType<AudioManager>().Play("ShootSound");
 
             // Add velocity to the bullet
             Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
