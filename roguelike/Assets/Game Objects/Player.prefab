@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 8002174283985549435}
   - component: {fileID: 4316792138634044462}
   - component: {fileID: 926409206}
-  - component: {fileID: 3264977168235205092}
+  - component: {fileID: 311601932711197611}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -156,7 +156,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 0
   rb: {fileID: 8002174283985549435}
---- !u!114 &3264977168235205092
+  initDeathAmount: 3
+--- !u!114 &311601932711197611
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -243,7 +244,8 @@ PrefabInstance:
       propertyPath: m_LocalRotation.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 9150767364105252982, guid: 9d5660768964d437b8b95d16ec3ca618, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 9d5660768964d437b8b95d16ec3ca618, type: 3}
 --- !u!4 &2782207914080003917 stripped
 Transform:

@@ -11,7 +11,6 @@ public class Weapon : MonoBehaviour
     private float nextFireTime = 0f;
     private float currentFirerate;
     private IncreasedFirerate increasedFirerate;
-    private bool equippedMultiShot = false;
     private bool bombOnCooldown = false;
     public GameObject bombPrefab;
     private void EquipIncreasedFirerate()
@@ -46,7 +45,7 @@ public class Weapon : MonoBehaviour
 
     IEnumerator InstantiateBullet(string type)
     {
-        if (equippedMultiShot && type != "bomb")
+        if (PlayerController.unlockedMultishot && type != "bomb")
         {
             // Create three bullets from the Bullet Prefab
             GameObject bullet1 = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
@@ -65,7 +64,7 @@ public class Weapon : MonoBehaviour
             Rigidbody2D rb3 = bullet3.GetComponent<Rigidbody2D>();
             rb3.AddForce(Quaternion.Euler(0, 0, 25) * firePoint.up * bulletForce, ForceMode2D.Impulse);
         }
-        else if (type == "bomb" && !bombOnCooldown)
+        else if (type == "bomb" && !bombOnCooldown && PlayerController.unlockedBomb)
         {
             bombOnCooldown = true;
             GameObject bombInstance = Instantiate(bombPrefab, firePoint.position, firePoint.rotation);
@@ -75,7 +74,7 @@ public class Weapon : MonoBehaviour
             bombOnCooldown = false;
         }
 
-        else if(type == "bullet" && !equippedMultiShot)
+        else if(type == "bullet" && !PlayerController.unlockedMultishot)
         {
             // Create a single bullet from the Bullet Prefab
             GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);

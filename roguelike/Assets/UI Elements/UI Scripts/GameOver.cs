@@ -37,6 +37,9 @@ public class GameOver : MonoBehaviour
     public void Restart()
     {
         Time.timeScale = 1f;
+        PlayerController.deathAmount++;
+        CheckAbilityStatus(PlayerController.deathAmount);
+        Debug.Log("After Restart: " + PlayerController.deathAmount);
         SceneManager.LoadScene(1);
     }
 
@@ -50,5 +53,28 @@ public class GameOver : MonoBehaviour
     {
         Debug.Log("Quit game");
         Application.Quit();
+    }
+    private void CheckAbilityStatus(int deathAmount)
+    {
+        if (deathAmount >= 2 && !PlayerController.unlockedTeleport)
+        {
+            PlayerController.unlockedTeleport = true;
+            Debug.Log("Teleport unlocked");
+        }
+        if (deathAmount >= 4 && !PlayerController.unlockedMultishot)
+        {
+            PlayerController.unlockedMultishot = true;
+            Debug.Log("Multishot unlocked");
+        }
+        if (deathAmount >= 6)
+        {
+            PlayerController.unlockedBomb = true;
+            Debug.Log("Bomb unlocked");
+        }
+        if (deathAmount >= 7)
+        {
+            PlayerController.unlockedRun = true;
+            Debug.Log("Run unlocked");
+        }
     }
 }
