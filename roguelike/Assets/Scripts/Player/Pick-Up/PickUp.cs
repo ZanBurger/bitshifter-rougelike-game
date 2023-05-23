@@ -6,23 +6,30 @@ public class PickUp : MonoBehaviour
 {
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.CompareTag("Player"))
+        if (!other.gameObject.CompareTag("Player")) return;
+        
+        // Generate a random number between 0 and 1 to determine the ability type
+        var abilityType = Random.Range(0, 2);
+        switch (abilityType)
         {
-            // Generate a random number between 0 and 1 to determine the ability type
-            // int abilityType = Random.Range(0, 2);
-            int abilityType = 0;
-            switch (abilityType)
-            {
-                case 0:
-                    if (!other.gameObject.GetComponent<Player.IncreasedMovement>())
-                    {
-                        Player.IncreasedMovement increasedMovementEffect = other.gameObject.AddComponent<Player.IncreasedMovement>();
-                        increasedMovementEffect.playerController = other.GetComponent<PlayerController>();
-                    }
-                    break;
-            }
-
-            Destroy(gameObject);
+            case 0:
+                if (!other.gameObject.GetComponent<Player.IncreasedMovement>())
+                {
+                    Player.IncreasedMovement increasedMovementEffect = other.gameObject.AddComponent<Player.IncreasedMovement>();
+                    increasedMovementEffect.playerController = other.GetComponent<PlayerController>();
+                }
+                break;
+            case 1:
+                if (!other.gameObject.GetComponent<Player.IncreasedFirerate>())
+                {
+                    Player.IncreasedFirerate increasedFirerateEffect = other.gameObject.AddComponent<Player.IncreasedFirerate>();
+                    Weapon weapon = other.gameObject.GetComponentInChildren<Weapon>();
+                    increasedFirerateEffect.Initialize(weapon);
+                }
+                break;
+                    
         }
+
+        Destroy(gameObject);
     }
 }
