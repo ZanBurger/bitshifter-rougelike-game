@@ -3,24 +3,27 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class IncreasedFirerate : MonoBehaviour
+namespace Player
 {
-    public float baseFirerate = 0.25f; 
-    public float firerateMultiplier = 5f;
-    public int durationSeconds = 10;
-    private Weapon weapon;
-
-    void Awake()
+    public class IncreasedFirerate : MonoBehaviour
     {
-        weapon = GetComponent<Weapon>();
-        StartCoroutine(IncreaseFirerate());
-    }
+        public float baseFirerate = 0.25f;
+        public float firerateMultiplier = 5f;
+        public int durationSeconds = 10;
+        private Weapon weapon;
 
-    IEnumerator IncreaseFirerate()
-    {
-        weapon.SetCurrentFirerate(baseFirerate * firerateMultiplier);
-        yield return new WaitForSeconds(durationSeconds);
-        weapon.SetCurrentFirerate(baseFirerate);
-        Destroy(this);
+        public void Initialize(Weapon playerWeapon)
+        {
+            weapon = playerWeapon;
+            StartCoroutine(IncreaseFirerate());
+        }
+
+        IEnumerator IncreaseFirerate()
+        {
+            weapon.SetCurrentFirerate(baseFirerate / firerateMultiplier);
+            yield return new WaitForSeconds(durationSeconds);
+            weapon.SetCurrentFirerate(baseFirerate);
+            Destroy(this);
+        }
     }
 }
