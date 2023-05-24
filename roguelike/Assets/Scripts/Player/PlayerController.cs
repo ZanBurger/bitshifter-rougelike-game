@@ -76,6 +76,11 @@ public class PlayerController : MonoBehaviour
 
         if (teleport == null) teleport = gameObject.GetComponent<Teleport>();
         if (Input.GetKey(KeyCode.Q) && teleport != null && !teleport.onCooldown && unlockedTeleport){
+            if (FindAnyObjectByType<AudioManager>() != null)
+            {
+                FindObjectOfType<AudioManager>().Play("TeleportSound");
+            }
+
             teleport.TeleportPlayer();
         }
     }

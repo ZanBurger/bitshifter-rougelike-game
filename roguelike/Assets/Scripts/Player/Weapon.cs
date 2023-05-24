@@ -52,6 +52,11 @@ public class Weapon : MonoBehaviour
             GameObject bullet2 = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
             GameObject bullet3 = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
 
+            if (FindAnyObjectByType<AudioManager>() != null)
+            {
+                FindObjectOfType<AudioManager>().Play("MultiSound");
+            }
+
             // Add velocity to the middle bullet
             Rigidbody2D rb1 = bullet1.GetComponent<Rigidbody2D>();
             rb1.AddForce(firePoint.up * bulletForce, ForceMode2D.Impulse);
@@ -63,6 +68,7 @@ public class Weapon : MonoBehaviour
             // Add velocity to the left bullet
             Rigidbody2D rb3 = bullet3.GetComponent<Rigidbody2D>();
             rb3.AddForce(Quaternion.Euler(0, 0, 25) * firePoint.up * bulletForce, ForceMode2D.Impulse);
+            
         }
         else if (type == "bomb" && !bombOnCooldown && PlayerController.unlockedBomb)
         {
@@ -70,7 +76,16 @@ public class Weapon : MonoBehaviour
             GameObject bombInstance = Instantiate(bombPrefab, firePoint.position, firePoint.rotation);
             Rigidbody2D rb = bombInstance.GetComponent<Rigidbody2D>();
             rb.AddForce(firePoint.up * bulletForce, ForceMode2D.Impulse);
+            if (FindAnyObjectByType<AudioManager>() != null)
+            {
+                FindObjectOfType<AudioManager>().Play("BombSound");
+            }
+
+
             yield return new WaitForSeconds(4);
+
+         
+
             bombOnCooldown = false;
         }
 
