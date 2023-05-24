@@ -16,9 +16,9 @@ public class PlayerController : MonoBehaviour
     public static bool unlockedMultishot = false;
     public static bool unlockedTeleport = false;
     public static bool unlockedBomb = false;
+    public static bool unlockedRun = false;
     private Vector2 _lookDirection;
     public static int deathAmount = 0; 
-    public static bool  unlockedRun = false;
     // Start is called before the first frame update
     void Start(){
         moveSpeed = 5;
@@ -26,8 +26,6 @@ public class PlayerController : MonoBehaviour
         
         increasedMovement.playerController = this;
     }
-
-    
 
     // Update is called once per frame, because of that we shouldn't do physics here.
     void Update()
