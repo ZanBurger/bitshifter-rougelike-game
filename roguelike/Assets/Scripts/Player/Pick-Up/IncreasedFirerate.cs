@@ -23,6 +23,7 @@ namespace Player
             weapon.SetCurrentFirerate(baseFirerate / firerateMultiplier);
             yield return new WaitForSeconds(durationSeconds);
             weapon.SetCurrentFirerate(baseFirerate);
+            PickUp.isPickedRate = false;
             Destroy(this);
         }
     }

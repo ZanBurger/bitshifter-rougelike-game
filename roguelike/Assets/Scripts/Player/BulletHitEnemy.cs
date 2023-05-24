@@ -16,7 +16,7 @@ public class BulletHitEnemy : MonoBehaviour
        // If a bullet hits an enemy, destroy the enemy object and the bullet itself.
         if(other.gameObject.CompareTag("Enemy")){
             // Enemy has a 10% chance of dropping an item
-            if (dropChance <= 0.1f)
+            if (dropChance <= 1.0f)
             {
                 Instantiate(pickUpPrefab, transform.position, Quaternion.identity);
             }         

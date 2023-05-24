@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class PickUp : MonoBehaviour
 {
+    public static bool isPickedMovement = false;
+    public static bool isPickedRate = false;
+
     void OnTriggerEnter2D(Collider2D other)
     {
         if (!other.gameObject.CompareTag("Player")) return;
@@ -17,6 +20,7 @@ public class PickUp : MonoBehaviour
                 {
                     Player.IncreasedMovement increasedMovementEffect = other.gameObject.AddComponent<Player.IncreasedMovement>();
                     increasedMovementEffect.playerController = other.GetComponent<PlayerController>();
+                    isPickedMovement = true;
                 }
                 break;
             case 1:
@@ -25,6 +29,7 @@ public class PickUp : MonoBehaviour
                     Player.IncreasedFirerate increasedFirerateEffect = other.gameObject.AddComponent<Player.IncreasedFirerate>();
                     Weapon weapon = other.gameObject.GetComponentInChildren<Weapon>();
                     increasedFirerateEffect.Initialize(weapon);
+                    isPickedRate = true;
                 }
                 break;
                     

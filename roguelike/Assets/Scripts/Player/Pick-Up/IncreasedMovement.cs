@@ -20,6 +20,7 @@ namespace Player
             isMovementIncreased = true;
             yield return new WaitForSeconds(durationSeconds);
             isMovementIncreased = false;
+            PickUp.isPickedMovement = false;
             Destroy(this);
         }
         
