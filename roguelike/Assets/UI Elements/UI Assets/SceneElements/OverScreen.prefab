@@ -566,6 +566,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameOverUI: {fileID: 8134967039799596096}
+  healthBarUI: {fileID: 0}
+  bossBarUI: {fileID: 0}
 --- !u!1 &8134967038348574948
 GameObject:
   m_ObjectHideFlags: 0

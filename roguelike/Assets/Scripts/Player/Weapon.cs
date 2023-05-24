@@ -11,7 +11,6 @@ public class Weapon : MonoBehaviour
     private float nextFireTime = 0f;
     private float currentFirerate;
     private IncreasedFirerate increasedFirerate;
-    private bool equippedMultiShot = false;
     private bool bombOnCooldown = false;
     public GameObject bombPrefab;
     private void EquipIncreasedFirerate()
@@ -46,12 +45,17 @@ public class Weapon : MonoBehaviour
 
     IEnumerator InstantiateBullet(string type)
     {
-        if (equippedMultiShot && type != "bomb")
+        if (PlayerController.unlockedMultishot && type != "bomb")
         {
             // Create three bullets from the Bullet Prefab
             GameObject bullet1 = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
             GameObject bullet2 = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
             GameObject bullet3 = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
+
+            if (FindAnyObjectByType<AudioManager>() != null)
+            {
+                FindObjectOfType<AudioManager>().Play("MultiSound");
+            }
 
             // Add velocity to the middle bullet
             Rigidbody2D rb1 = bullet1.GetComponent<Rigidbody2D>();
@@ -64,18 +68,28 @@ public class Weapon : MonoBehaviour
             // Add velocity to the left bullet
             Rigidbody2D rb3 = bullet3.GetComponent<Rigidbody2D>();
             rb3.AddForce(Quaternion.Euler(0, 0, 25) * firePoint.up * bulletForce, ForceMode2D.Impulse);
+            
         }
-        else if (type == "bomb" && !bombOnCooldown)
+        else if (type == "bomb" && !bombOnCooldown && PlayerController.unlockedBomb)
         {
             bombOnCooldown = true;
             GameObject bombInstance = Instantiate(bombPrefab, firePoint.position, firePoint.rotation);
             Rigidbody2D rb = bombInstance.GetComponent<Rigidbody2D>();
             rb.AddForce(firePoint.up * bulletForce, ForceMode2D.Impulse);
+            if (FindAnyObjectByType<AudioManager>() != null)
+            {
+                FindObjectOfType<AudioManager>().Play("BombSound");
+            }
+
+
             yield return new WaitForSeconds(4);
+
+         
+
             bombOnCooldown = false;
         }
 
-        else if(type == "bullet" && !equippedMultiShot)
+        else if(type == "bullet" && !PlayerController.unlockedMultishot)
         {
             // Create a single bullet from the Bullet Prefab
             GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
