@@ -87,10 +87,3 @@ MonoBehaviour:
     pitch: 2.02
     loop: 0
     source: {fileID: 0}
-  - name: DeathSound
-    clip: {fileID: 8300000, guid: eb675bbcc87e8ab44b782d22e8fcec4d, type: 3}
-    group: {fileID: 24300002, guid: b089b1ef2f5cc2d4eaaf22544cee0ff4, type: 2}
-    volume: 0.559
-    pitch: 1
-    loop: 0
-    source: {fileID: 0}

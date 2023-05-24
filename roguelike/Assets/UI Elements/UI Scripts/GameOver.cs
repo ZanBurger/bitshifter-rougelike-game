@@ -14,6 +14,7 @@ public class GameOver : MonoBehaviour
     {
         Time.timeScale = 1f;
         var gameObjectP = GameObject.Find("Player");
+
         if (gameObjectP == null) return;
         _player = gameObjectP;
     }
@@ -54,6 +55,7 @@ public class GameOver : MonoBehaviour
         Debug.Log("Quit game");
         Application.Quit();
     }
+
     private void CheckAbilityStatus(int deathAmount)
     {
         if (deathAmount >= 2 && !PlayerController.unlockedTeleport)
